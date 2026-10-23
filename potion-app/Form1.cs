@@ -1,3 +1,4 @@
+using potion_app.Models;
 using potion_app.Repo;
 
 namespace potion_app
@@ -76,7 +77,42 @@ namespace potion_app
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Ingredient ingredient = new Ingredient();
 
+                ingredient.Name = FindInput("Name");
+                ingredient.Stock = int.Parse(Stock.Text);
+                ingredient.Unit = FindInput("Unit");
+                ingredient.Price = decimal.Parse(FindInput("Price"));
+
+                repo.AddIngredient(ingredient);
+
+                MessageBox.Show("Ingredient added successfully.");
+
+                LoadIngredients();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Enter a valid stock and price.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not add ingredient: " + ex.Message);
+            }
+        }
+
+        // Read an existing text box by its actual control name.
+        private string FindInput(string controlName)
+        {
+            Control[] controls = Controls.Find(controlName, true);
+
+            if (controls.Length == 0 || !(controls[0] is TextBox))
+                throw new Exception(
+                    "Could not find the text box named " + controlName +
+                    ". Check its (Name) property in the Designer.");
+
+            return controls[0].Text.Trim();
         }
     }
 }
