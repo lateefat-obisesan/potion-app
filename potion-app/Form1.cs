@@ -17,6 +17,11 @@ namespace potion_app
             LoadPotions();
         }
 
+        private void LoadIngredients()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = repo.GetIngredients();
+        }
 
         private void tabMain_Click(object sender, EventArgs e)
         {
