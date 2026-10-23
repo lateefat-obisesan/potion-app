@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace potion_app.Forms
 {
-    internal class RecipeForm
+    public class RecipeForm
     {
     }
 }
