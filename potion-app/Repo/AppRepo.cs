@@ -16,5 +16,13 @@ namespace potion_app.Repo
                 return db.Ingredients.OrderBy(x => x.Name).ToList();
             }
         }
+
+        public List<Recipe> GetRecipes()
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                return db.Recipes.OrderBy(x => x.Name).ToList();
+            }
+        }
     }
 }
