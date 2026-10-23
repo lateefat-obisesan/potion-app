@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace potion_app.Repo
 {
-    public class AppRepo
+    public class DataRepo
     {
         private static List<Ingredient> ingredients = new List<Ingredient>();
         private static List<Recipe> recipes = new List<Recipe>();

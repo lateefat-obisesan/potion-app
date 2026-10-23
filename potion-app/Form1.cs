@@ -1,7 +1,10 @@
+using potion_app.Repo;
+
 namespace potion_app
 {
     public partial class Form1 : Form
     {
+        private DataRepo repo = new DataRepo();
         public Form1()
         {
             InitializeComponent();
