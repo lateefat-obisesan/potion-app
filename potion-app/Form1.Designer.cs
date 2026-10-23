@@ -28,135 +28,230 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
-            tabControl1 = new TabControl();
-            tabMain = new TabPage();
-            label1 = new Label();
-            Ingredients = new TabPage();
-            Recipe = new TabPage();
-            Brew = new TabPage();
-            Potions = new TabPage();
-            Reports = new TabPage();
-            tabControl1.SuspendLayout();
-            tabMain.SuspendLayout();
+            Unit = new TextBox();
+            ingredient = new DataGridView();
+            button1 = new Button();
+            Stock = new TextBox();
+            Price = new TextBox();
+            comboBox2 = new ComboBox();
+            dataGridView1 = new DataGridView();
+            comboBox1 = new ComboBox();
+            textBox6 = new TextBox();
+            textBox7 = new TextBox();
+            textBox8 = new TextBox();
+            button2 = new Button();
+            button3 = new Button();
+            button4Potion = new Button();
+            button5 = new Button();
+            button6 = new Button();
+            dataGridView2brew = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)ingredient).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2brew).BeginInit();
             SuspendLayout();
             // 
-            // label2
+            // Unit
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(466, 228);
-            label2.Name = "label2";
-            label2.Size = new Size(50, 20);
-            label2.TabIndex = 1;
-            label2.Text = "label2";
+            Unit.Location = new Point(158, 14);
+            Unit.Name = "Unit";
+            Unit.Size = new Size(125, 27);
+            Unit.TabIndex = 0;
+            Unit.Text = "Unit";
             // 
-            // tabControl1
+            // ingredient
             // 
-            tabControl1.Controls.Add(tabMain);
-            tabControl1.Controls.Add(Ingredients);
-            tabControl1.Controls.Add(Recipe);
-            tabControl1.Controls.Add(Brew);
-            tabControl1.Controls.Add(Potions);
-            tabControl1.Controls.Add(Reports);
-            tabControl1.Location = new Point(69, 147);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(655, 214);
-            tabControl1.TabIndex = 2;
+            ingredient.BackgroundColor = SystemColors.ButtonFace;
+            ingredient.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ingredient.Location = new Point(12, 12);
+            ingredient.Name = "ingredient";
+            ingredient.RowHeadersWidth = 51;
+            ingredient.Size = new Size(300, 188);
+            ingredient.TabIndex = 3;
             // 
-            // tabMain
+            // button1
             // 
-            tabMain.Controls.Add(label1);
-            tabMain.Location = new Point(4, 29);
-            tabMain.Name = "tabMain";
-            tabMain.Padding = new Padding(3);
-            tabMain.Size = new Size(647, 181);
-            tabMain.TabIndex = 0;
-            tabMain.Text = "tabPage1";
-            tabMain.UseVisualStyleBackColor = true;
-            tabMain.Click += tabMain_Click;
+            button1.Location = new Point(12, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 29);
+            button1.TabIndex = 4;
+            button1.Text = "Add Ingredient";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // label1
+            // Stock
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(234, 83);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 20);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            Stock.Location = new Point(12, 57);
+            Stock.Name = "Stock";
+            Stock.Size = new Size(125, 27);
+            Stock.TabIndex = 5;
+            Stock.Text = "Stock";
+            Stock.TextChanged += Stock_TextChanged;
             // 
-            // Ingredients
+            // Price
             // 
-            Ingredients.Location = new Point(4, 29);
-            Ingredients.Name = "Ingredients";
-            Ingredients.Padding = new Padding(3);
-            Ingredients.Size = new Size(647, 181);
-            Ingredients.TabIndex = 1;
-            Ingredients.Text = "tabPage2";
-            Ingredients.UseVisualStyleBackColor = true;
+            Price.Location = new Point(158, 57);
+            Price.Name = "Price";
+            Price.Size = new Size(125, 27);
+            Price.TabIndex = 6;
+            Price.Text = "Price";
             // 
-            // Recipe
+            // comboBox2
             // 
-            Recipe.Location = new Point(4, 29);
-            Recipe.Name = "Recipe";
-            Recipe.Size = new Size(647, 181);
-            Recipe.TabIndex = 2;
-            Recipe.Text = "Recipe";
-            Recipe.UseVisualStyleBackColor = true;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(111, 379);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(151, 28);
+            comboBox2.TabIndex = 8;
+            comboBox2.Text = "Recipe";
             // 
-            // Brew
+            // dataGridView1
             // 
-            Brew.Location = new Point(4, 29);
-            Brew.Name = "Brew";
-            Brew.Size = new Size(647, 181);
-            Brew.TabIndex = 3;
-            Brew.Text = "tabPage2";
-            Brew.UseVisualStyleBackColor = true;
+            dataGridView1.BackgroundColor = SystemColors.ButtonFace;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(464, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(300, 218);
+            dataGridView1.TabIndex = 9;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
-            // Potions
+            // comboBox1
             // 
-            Potions.Location = new Point(4, 29);
-            Potions.Name = "Potions";
-            Potions.Size = new Size(647, 181);
-            Potions.TabIndex = 4;
-            Potions.Text = "tabPage3";
-            Potions.UseVisualStyleBackColor = true;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(478, 172);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 28);
+            comboBox1.TabIndex = 10;
+            comboBox1.Text = "Ingredient";
             // 
-            // Reports
+            // textBox6
             // 
-            Reports.Location = new Point(4, 29);
-            Reports.Name = "Reports";
-            Reports.Size = new Size(647, 181);
-            Reports.TabIndex = 5;
-            Reports.Text = "tabPage4";
-            Reports.UseVisualStyleBackColor = true;
+            textBox6.Location = new Point(478, 70);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(125, 27);
+            textBox6.TabIndex = 16;
+            textBox6.Text = "Ingredient Quality";
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(639, 23);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(125, 27);
+            textBox7.TabIndex = 17;
+            textBox7.Text = "Description/Instructions";
+            // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(464, 23);
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(125, 27);
+            textBox8.TabIndex = 18;
+            textBox8.Text = "Recipe Name";
+            // 
+            // button2
+            // 
+            button2.Location = new Point(656, 172);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 19;
+            button2.Text = "Add Ingredient to Recipe";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(607, 331);
+            button3.Name = "button3";
+            button3.Size = new Size(94, 29);
+            button3.TabIndex = 20;
+            button3.Text = "Generate Report";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4Potion
+            // 
+            button4Potion.Location = new Point(369, 344);
+            button4Potion.Name = "button4Potion";
+            button4Potion.Size = new Size(94, 29);
+            button4Potion.TabIndex = 21;
+            button4Potion.Text = "Delete Potion";
+            button4Potion.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(-1, 379);
+            button5.Name = "button5";
+            button5.Size = new Size(94, 29);
+            button5.TabIndex = 22;
+            button5.Text = "Start Brewing";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(670, 111);
+            button6.Name = "button6";
+            button6.Size = new Size(94, 29);
+            button6.TabIndex = 23;
+            button6.Text = "Add Recipe";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2brew
+            // 
+            dataGridView2brew.BackgroundColor = SystemColors.ControlLightLight;
+            dataGridView2brew.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2brew.Location = new Point(-1, 206);
+            dataGridView2brew.Name = "dataGridView2brew";
+            dataGridView2brew.RowHeadersWidth = 51;
+            dataGridView2brew.Size = new Size(300, 167);
+            dataGridView2brew.TabIndex = 24;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(tabControl1);
-            Controls.Add(label2);
+            ClientSize = new Size(800, 530);
+            Controls.Add(dataGridView2brew);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(button4Potion);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(textBox8);
+            Controls.Add(textBox7);
+            Controls.Add(textBox6);
+            Controls.Add(comboBox1);
+            Controls.Add(dataGridView1);
+            Controls.Add(comboBox2);
+            Controls.Add(Price);
+            Controls.Add(Stock);
+            Controls.Add(Unit);
+            Controls.Add(button1);
+            Controls.Add(ingredient);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
-            tabControl1.ResumeLayout(false);
-            tabMain.ResumeLayout(false);
-            tabMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ingredient).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2brew).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label label2;
-        private TabControl tabControl1;
-        private TabPage Ingredients;
-        public TabPage tabMain;
-        private Label label1;
-        private TabPage Recipe;
-        private TabPage Brew;
-        private TabPage Potions;
-        private TabPage Reports;
+        private TextBox Unit;
+        private DataGridView ingredient;
+        private Button button1;
+        private TextBox Stock;
+        private TextBox Price;
+        private ComboBox comboBox2;
+        private DataGridView dataGridView1;
+        private ComboBox comboBox1;
+        private TextBox textBox6;
+        private TextBox textBox7;
+        private TextBox textBox8;
+        private Button button2;
+        private Button button3;
+        private Button button4Potion;
+        private Button button5;
+        private Button button6;
+        private DataGridView dataGridView2brew;
     }
 }
