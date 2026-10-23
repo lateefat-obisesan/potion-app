@@ -23,19 +23,45 @@ namespace potion_app
             dataGridView1.DataSource = repo.GetIngredients();
         }
 
-        private void tabMain_Click(object sender, EventArgs e)
+        private void LoadRecipes()
         {
 
         }
 
+        private void LoadPotions()
+        {
+
+        }
+
+        private void tabMain_Click(object sender, EventArgs e)
+        {
+            LoadIngredients();
+            LoadRecipes();
+            LoadPotions();
+        }
+
         private void Stock_TextChanged(object sender, EventArgs e)
         {
+            int stock;
+
+            if (string.IsNullOrWhiteSpace(Stock.Text))
+                return;
+
+            if (!int.TryParse(Stock.Text, out stock) || stock < 0)
+            {
+                //Stock.BackColor = System.Drawing.Color.MistyRose;
+            }
+            else
+            {
+                //Stock.BackColor = System.Drawing.SystemColors.Window;
+            }
 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex < 0)
+                return;
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
