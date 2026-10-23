@@ -11,5 +11,10 @@ namespace potion_app
         {
 
         }
+
+        private void tabMain_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

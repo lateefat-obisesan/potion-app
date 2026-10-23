@@ -31,8 +31,12 @@
             label2 = new Label();
             tabControl1 = new TabControl();
             tabMain = new TabPage();
-            tabPage2 = new TabPage();
             label1 = new Label();
+            Ingredients = new TabPage();
+            Recipe = new TabPage();
+            Brew = new TabPage();
+            Potions = new TabPage();
+            Reports = new TabPage();
             tabControl1.SuspendLayout();
             tabMain.SuspendLayout();
             SuspendLayout();
@@ -49,7 +53,11 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(tabMain);
-            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(Ingredients);
+            tabControl1.Controls.Add(Recipe);
+            tabControl1.Controls.Add(Brew);
+            tabControl1.Controls.Add(Potions);
+            tabControl1.Controls.Add(Reports);
             tabControl1.Location = new Point(69, 147);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -66,16 +74,7 @@
             tabMain.TabIndex = 0;
             tabMain.Text = "tabPage1";
             tabMain.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Location = new Point(4, 29);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(647, 181);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
+            tabMain.Click += tabMain_Click;
             // 
             // label1
             // 
@@ -85,6 +84,52 @@
             label1.Size = new Size(50, 20);
             label1.TabIndex = 0;
             label1.Text = "label1";
+            // 
+            // Ingredients
+            // 
+            Ingredients.Location = new Point(4, 29);
+            Ingredients.Name = "Ingredients";
+            Ingredients.Padding = new Padding(3);
+            Ingredients.Size = new Size(647, 181);
+            Ingredients.TabIndex = 1;
+            Ingredients.Text = "tabPage2";
+            Ingredients.UseVisualStyleBackColor = true;
+            // 
+            // Recipe
+            // 
+            Recipe.Location = new Point(4, 29);
+            Recipe.Name = "Recipe";
+            Recipe.Size = new Size(647, 181);
+            Recipe.TabIndex = 2;
+            Recipe.Text = "Recipe";
+            Recipe.UseVisualStyleBackColor = true;
+            // 
+            // Brew
+            // 
+            Brew.Location = new Point(4, 29);
+            Brew.Name = "Brew";
+            Brew.Size = new Size(647, 181);
+            Brew.TabIndex = 3;
+            Brew.Text = "tabPage2";
+            Brew.UseVisualStyleBackColor = true;
+            // 
+            // Potions
+            // 
+            Potions.Location = new Point(4, 29);
+            Potions.Name = "Potions";
+            Potions.Size = new Size(647, 181);
+            Potions.TabIndex = 4;
+            Potions.Text = "tabPage3";
+            Potions.UseVisualStyleBackColor = true;
+            // 
+            // Reports
+            // 
+            Reports.Location = new Point(4, 29);
+            Reports.Name = "Reports";
+            Reports.Size = new Size(647, 181);
+            Reports.TabIndex = 5;
+            Reports.Text = "tabPage4";
+            Reports.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -106,8 +151,12 @@
         #endregion
         private Label label2;
         private TabControl tabControl1;
-        private TabPage tabPage2;
+        private TabPage Ingredients;
         public TabPage tabMain;
         private Label label1;
+        private TabPage Recipe;
+        private TabPage Brew;
+        private TabPage Potions;
+        private TabPage Reports;
     }
 }
