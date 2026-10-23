@@ -12,8 +12,11 @@ namespace potion_app
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            LoadIngredients();
+            LoadRecipes();
+            LoadPotions();
         }
+
 
         private void tabMain_Click(object sender, EventArgs e)
         {
