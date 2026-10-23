@@ -9,89 +9,72 @@ namespace potion_app.Repo
 {
     public class AppRepo
     {
+        private static List<Ingredient> ingredients = new List<Ingredient>();
+        private static List<Recipe> recipes = new List<Recipe>();
+        private static List<Potion> potions = new List<Potion>();
+
         public List<Ingredient> GetIngredients()
         {
-            using (AppDbContext db = new AppDbContext())
-            {
-                return db.Ingredients.OrderBy(x => x.Name).ToList();
-            }
+            return ingredients.OrderBy(x => x.Name).ToList();
         }
 
         public List<Recipe> GetRecipes()
         {
-            using (AppDbContext db = new AppDbContext())
-            {
-                return db.Recipes.OrderBy(x => x.Name).ToList();
-            }
+            return recipes.OrderBy(x => x.Name).ToList();
         }
 
         public List<Potion> GetPotions()
         {
-            using (AppDbContext db = new AppDbContext())
-            {
-                return db.Potions.OrderByDescending(x => x.BrewedAt).ToList();
-            }
+            return potions.OrderByDescending(x => x.BrewedAt).ToList();
         }
 
         public void AddIngredient(Ingredient ingredient)
         {
-            using (AppDbContext db = new AppDbContext())
-            {
-                db.Ingredients.Add(ingredient);
-                db.SaveChanges();
-            }
+            ingredient.Id = ingredients.Count + 1;
+            ingredients.Add(ingredient);
         }
 
         public void UpdateStock(int id, int stock)
         {
-            using (AppDbContext db = new AppDbContext())
-            {
-                Ingredient ingredient = db.Ingredients.Find(id);
+            Ingredient ingredient = ingredients.FirstOrDefault(x => x.Id == id);
 
-                if (ingredient == null)
-                    throw new Exception("Ingredient was not found.");
+            if (ingredient == null)
+                throw new Exception("Ingredient was not found.");
 
-                if (stock < 0)
-                    throw new Exception("Stock cannot be negative.");
+            if (stock < 0)
+                throw new Exception("Stock cannot be negative.");
 
-                ingredient.Stock = stock;
-                db.SaveChanges();
-            }
+            ingredient.Stock = stock;
         }
 
         public void RetireIngredient(int id)
         {
-            using (AppDbContext db = new AppDbContext())
-            {
-                bool used = db.RecipeIngredients
-                    .Any(x => x.IngredientId == id);
+            Ingredient ingredient = ingredients.FirstOrDefault(x => x.Id == id);
 
-                if (used)
-                    throw new Exception(
-                        "This ingredient belongs to a recipe and cannot be retired.");
+            if (ingredient == null)
+                return;
 
-                Ingredient ingredient = db.Ingredients.Find(id);
+            ingredients.Remove(ingredient);
+        }
 
-                if (ingredient != null)
-                {
-                    db.Ingredients.Remove(ingredient);
-                    db.SaveChanges();
-                }
-            }
+        public void AddRecipe(Recipe recipe)
+        {
+            recipe.Id = recipes.Count + 1;
+            recipes.Add(recipe);
+        }
+
+        public void AddPotion(Potion potion)
+        {
+            potion.Id = potions.Count + 1;
+            potions.Add(potion);
         }
 
         public void ConsumePotion(int id)
         {
-            using (AppDbContext db = new AppDbContext())
-            {
-                Potion potion = db.Potions.Find(id);
+            Potion potion = potions.FirstOrDefault(x => x.Id == id);
 
-                if (potion != null)
-                {
-                    db.Potions.Remove(potion);
-                    db.SaveChanges();
-                }
-            }
+            if (potion != null)
+                potions.Remove(potion);
         }
     }
 }
