@@ -32,7 +32,9 @@
             tabControl1 = new TabControl();
             tabMain = new TabPage();
             tabPage2 = new TabPage();
+            label1 = new Label();
             tabControl1.SuspendLayout();
+            tabMain.SuspendLayout();
             SuspendLayout();
             // 
             // label2
@@ -56,6 +58,7 @@
             // 
             // tabMain
             // 
+            tabMain.Controls.Add(label1);
             tabMain.Location = new Point(4, 29);
             tabMain.Name = "tabMain";
             tabMain.Padding = new Padding(3);
@@ -69,10 +72,19 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(242, 92);
+            tabPage2.Size = new Size(647, 181);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(234, 83);
+            label1.Name = "label1";
+            label1.Size = new Size(50, 20);
+            label1.TabIndex = 0;
+            label1.Text = "label1";
             // 
             // Form1
             // 
@@ -85,6 +97,8 @@
             Text = "Form1";
             Load += Form1_Load;
             tabControl1.ResumeLayout(false);
+            tabMain.ResumeLayout(false);
+            tabMain.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -92,7 +106,8 @@
         #endregion
         private Label label2;
         private TabControl tabControl1;
-        private TabPage tabMain;
         private TabPage tabPage2;
+        public TabPage tabMain;
+        private Label label1;
     }
 }
