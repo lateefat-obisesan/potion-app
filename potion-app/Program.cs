@@ -1,3 +1,5 @@
+using potion_app.Repo;
+
 namespace potion_app
 {
     internal static class Program
@@ -11,6 +13,11 @@ namespace potion_app
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            using (AppDbContext db = new AppDbContext())
+            {
+                db.Database.EnsureCreated();
+            }
+
             Application.Run(new Form1());
         }
     }
