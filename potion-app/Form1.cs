@@ -13,106 +13,117 @@ namespace potion_app
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadIngredients();
-            LoadRecipes();
-            LoadPotions();
-        }
-
-        private void LoadIngredients()
-        {
-            dataGridView1.DataSource = null;
             dataGridView1.DataSource = repo.GetIngredients();
-        }
 
-        private void LoadRecipes()
-        {
-
-        }
-
-        private void LoadPotions()
-        {
-
+            comboBox1.DataSource = repo.GetRecipes();
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "Id";
         }
 
         private void tabMain_Click(object sender, EventArgs e)
         {
-            LoadIngredients();
-            LoadRecipes();
-            LoadPotions();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = repo.GetIngredients();
+
+            comboBox1.DataSource = null;
+            comboBox1.DataSource = repo.GetRecipes();
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "Id";
         }
 
         private void Stock_TextChanged(object sender, EventArgs e)
         {
             int stock;
 
-            if (string.IsNullOrWhiteSpace(Stock.Text))
-                return;
-
-            if (!int.TryParse(Stock.Text, out stock) || stock < 0)
+            if (Stock.Text != "" && !int.TryParse(Stock.Text, out stock))
             {
-                //Stock.BackColor = System.Drawing.Color.MistyRose;
+                MessageBox.Show("Stock must be a number.");
+                Stock.Clear();
             }
-            else
-            {
-                //Stock.BackColor = System.Drawing.SystemColors.Window;
-            }
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0)
-                return;
+            if (e.RowIndex >= 0)
+            {
+                dataGridView1.Rows[e.RowIndex].Selected = true;
+            }
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0)
+            {
+                dataGridView1.Rows[e.RowIndex].Selected = true;
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (comboBox1.SelectedItem is Recipe recipe)
+            {
+                MessageBox.Show(
+                    "Recipe: " + recipe.Name +
+                    "\nEffect: " + recipe.Effect +
+                    "\nTime: " + recipe.Duration + " seconds");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                Ingredient ingredient = new Ingredient();
+                TextBox nameBox = null;
+                TextBox stockBox = null;
+                TextBox unitBox = null;
+                TextBox priceBox = null;
 
-                ingredient.Name = FindInput("Name");
-                ingredient.Stock = int.Parse(Stock.Text);
-                ingredient.Unit = FindInput("Unit");
-                ingredient.Price = decimal.Parse(FindInput("Price"));
+                foreach (Control control in Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        if (control.Text == "Name")
+                            nameBox = (TextBox)control;
+                    }
+                }
+
+                nameBox = FindTextBox("Name");
+                stockBox = FindTextBox("Stock");
+                unitBox = FindTextBox("Unit");
+                priceBox = FindTextBox("Price");
+
+                Ingredient ingredient = new Ingredient();
+                ingredient.Name = nameBox.Text.Trim();
+                ingredient.Stock = int.Parse(stockBox.Text);
+                ingredient.Unit = unitBox.Text.Trim();
+                ingredient.Price = decimal.Parse(priceBox.Text);
 
                 repo.AddIngredient(ingredient);
 
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = repo.GetIngredients();
+
                 MessageBox.Show("Ingredient added successfully.");
 
-                LoadIngredients();
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Enter a valid stock and price.");
+                nameBox.Clear();
+                stockBox.Clear();
+                unitBox.Clear();
+                priceBox.Clear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not add ingredient: " + ex.Message);
+                MessageBox.Show("Please check the ingredient details: " + ex.Message);
             }
         }
 
-        // Read an existing text box by its actual control name.
-        private string FindInput(string controlName)
+        private TextBox FindTextBox(string controlName)
         {
-            Control[] controls = Controls.Find(controlName, true);
+            Control[] found = Controls.Find(controlName, true);
 
-            if (controls.Length == 0 || !(controls[0] is TextBox))
-                throw new Exception(
-                    "Could not find the text box named " + controlName +
-                    ". Check its (Name) property in the Designer.");
+            if (found.Length == 0 || !(found[0] is TextBox))
+                throw new Exception("TextBox not found: " + controlName);
 
-            return controls[0].Text.Trim();
+            return (TextBox)found[0];
         }
     }
 }
